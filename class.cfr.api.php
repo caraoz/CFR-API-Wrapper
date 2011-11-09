@@ -19,7 +19,7 @@
 class CFR_API {
 
 	public $url_base = 'http://www.gpo.gov/fdsys/bulkdata/CFR/';
-	public $ttl = 3600 //3600 = 1HR
+	public $ttl = 3600; //3600 = 1HR
 	
 	/**
 	 * Given a title and volume, returns the URL to the volume
@@ -61,7 +61,7 @@ class CFR_API {
 	 */
 	function get_title( $title, $year = null ) {
 		$vol = 1;
-		while ( $data = $this->get_vol( $title, $year, $vol ) {
+		while ( $data = $this->get_vol( $title, $year, $vol ) ) {
 			//do something here to merge
 			
 			$vol ++;
