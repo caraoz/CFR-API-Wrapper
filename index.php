@@ -1,6 +1,10 @@
 <?php
-error_reporting( E_ALL );
-include('class.cfr.api.php');
-$cfr = new CFR_API();
 
-var_dump( $cfr->get_vol( 41, 1 ) );
+//example usage, retrives 1 CFR 1
+echo "<PRE>";
+include('class.cfr.api.php');
+
+$cfr = new CFR_API();
+$data = $cfr->get_vol( 1, 1 );
+
+print_r( $data );
