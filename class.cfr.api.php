@@ -36,7 +36,7 @@ class CFR_API {
 		if ( !$year ) 
 			$year = date('Y');
 		
-		return $url_base . (int) $year . '/title-' . (int) $title . '/CFR-' . (int) $year . '-title' . (int) $title . '-vol' . (int) $vol . '.xml'; 
+		return $this->url_base . (int) $year . '/title-' . (int) $title . '/CFR-' . (int) $year . '-title' . (int) $title . '-vol' . (int) $vol . '.xml'; 
 	}
 	
 	/**
@@ -75,7 +75,7 @@ class CFR_API {
 	 * @todo suuppoer other methods of parsing
 	 */
 	function parse( $data ) {
-		return simple_xml_load_string( $data );
+		return simplexml_load_string( $data );
 	}
 	
 	/**
@@ -124,7 +124,7 @@ class CFR_API {
 		if ( !function_exists( 'apc_fetch' ) )
 			return false;
 	
-		return apc_set( $key, $value, $this->ttl );
+		return apc_store( $key, $value, $this->ttl );
 	
 	}
 	
