@@ -85,11 +85,17 @@ class CFR_API {
 	 * @return string the raw XML data
 	 */
 	function fetch( $url ) {
-		
+
 		if ( $cache = $this->get_cache( $url ) )
 			return $cache;
-			
-		@$data = file_get_contents( $url );
+		
+		//because the fdsys system returns a 200 status code, even on 404s, 
+		//we have to sniff the content type to prevent errors
+		$headers = get_headers( $url, true );
+		if ( $headers['Content-Type'] != 'text/xml' )
+			return false;
+		
+		@$data = file_get_contents( $url);
 		
 		if ( !$data )
 			return false;
